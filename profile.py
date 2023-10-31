@@ -14,7 +14,6 @@ control_iface = control_node.addInterface("if0")
 control_iface.component_id = "eth1"
 control_iface.addAddress(rspec.IPv4Address(prefixForIP + "1", "255.255.255.0"))
 link.addInterface(control_iface)
-control_node.addService(rspec.Execute(shell="sh", command="sudo bash /local/repository/setup_control.sh"))
 
 # Create two host nodes
 for i in range(2):
@@ -24,7 +23,7 @@ for i in range(2):
     iface.component_id = "eth1"
     iface.addAddress(rspec.IPv4Address(prefixForIP + str(i + 2), "255.255.255.0"))
     link.addInterface(iface)
-    host_node.addService(rspec.Execute(shell="sh", command="sudo bash /local/repository/setup_host.sh"))
+
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
